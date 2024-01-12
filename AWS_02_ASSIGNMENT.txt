@@ -1,0 +1,243 @@
+
+																AWS_02_ASSIGNMNET 
+														=================================
+														
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	
+Q.1 Create 6 IAM Users:
+1. Alice 
+
+root@DESKTOP-DA2RDP0:harsh#  aws iam create-user  --user-name Alice
+{
+    "User": {
+        "Path": "/",
+        "UserName": "Alice",
+        "UserId": "AIDARUKMIQZYTFT3X7XUF",
+        "Arn": "arn:aws:iam::112365962865:user/Alice",
+        "CreateDate": "2024-01-12T05:30:44Z"
+    }
+}
+root@DESKTOP-DA2RDP0:harsh#
+
+ 2. Bob 
+
+root@DESKTOP-DA2RDP0:harsh#  aws iam create-user  --user-name Bob
+{
+    "User": {
+        "Path": "/",
+        "UserName": "Bob",
+        "UserId": "AIDARUKMIQZYSSCGH3Y2F",
+        "Arn": "arn:aws:iam::112365962865:user/Bob",
+        "CreateDate": "2024-01-12T05:31:00Z"
+    }
+}
+
+3. Charles
+
+root@DESKTOP-DA2RDP0:harsh#  aws iam create-user  --user-name Charles
+{
+    "User": {
+        "Path": "/",
+        "UserName": "Charles",
+        "UserId": "AIDARUKMIQZY2OKWFF27L",
+        "Arn": "arn:aws:iam::112365962865:user/Charles",
+        "CreateDate": "2024-01-12T05:31:14Z"
+    }
+}
+
+4. David 
+
+root@DESKTOP-DA2RDP0:harsh# aws iam create-user  --user-name David
+{
+    "User": {
+        "Path": "/",
+        "UserName": "David",
+        "UserId": "AIDARUKMIQZYYT2LMDALS",
+        "Arn": "arn:aws:iam::112365962865:user/David",
+        "CreateDate": "2024-01-12T05:31:25Z"
+    }
+}
+
+5. Edward 
+
+root@DESKTOP-DA2RDP0:harsh# aws iam create-user  --user-name Edward
+{
+    "User": {
+        "Path": "/",
+        "UserName": "Edward",
+        "UserId": "AIDARUKMIQZY4GU2XU4H3",
+        "Arn": "arn:aws:iam::112365962865:user/Edward",
+        "CreateDate": "2024-01-12T05:31:37Z"
+    }
+}
+
+6. Fred
+
+root@DESKTOP-DA2RDP0:harsh# aws iam create-user  --user-name Fred
+{
+    "User": {
+        "Path": "/",
+        "UserName": "Fred",
+        "UserId": "AIDARUKMIQZY5TMTLYTDY",
+        "Arn": "arn:aws:iam::112365962865:user/Fred",
+        "CreateDate": "2024-01-12T05:31:51Z"
+    }
+}
+
+
+Q.2 Create 3 groups:
+1. Developers 
+
+root@DESKTOP-DA2RDP0:harsh#  aws iam create-group  --group-name Developers
+{
+    "Group": {
+        "Path": "/",
+        "GroupName": "Developers",
+        "GroupId": "AGPARUKMIQZYQ5TU56Q32",
+        "Arn": "arn:aws:iam::112365962865:group/Developers",
+        "CreateDate": "2024-01-12T05:32:03Z"
+    }
+}
+
+2. Operations 
+
+root@DESKTOP-DA2RDP0:harsh#  aws iam create-group  --group-name Operations
+{
+    "Group": {
+        "Path": "/",
+        "GroupName": "Operations",
+        "GroupId": "AGPARUKMIQZYR6YL63RY2",
+        "Arn": "arn:aws:iam::112365962865:group/Operations",
+        "CreateDate": "2024-01-12T05:32:17Z"
+    }
+}
+
+3. Audit-Team
+
+root@DESKTOP-DA2RDP0:harsh# aws iam create-group  --group-name Audit-Team
+{
+    "Group": {
+        "Path": "/",
+        "GroupName": "Audit-Team",
+        "GroupId": "AGPARUKMIQZYQCL3YMDTZ",
+        "Arn": "arn:aws:iam::112365962865:group/Audit-Team",
+        "CreateDate": "2024-01-12T05:32:30Z"
+    }
+}
+
+
+Q.3 Assign Policy 
+
+1. Assign the "IAMReadOnlyAccess" policy to the Developers group.
+
+root@DESKTOP-DA2RDP0:harsh#
+root@DESKTOP-DA2RDP0:harsh# aws iam attach-group-policy  --group-name Developers --policy-arn arn:aws:iam::aws:policy/IAMReadOnlyAccess
+
+2. Assign the "IAMReadOnlyAccess" policy to the Operations group.
+
+root@DESKTOP-DA2RDP0:harsh# aws iam attach-group-policy --group-name Operations --policy-arn arn:aws:iam::aws:policy/IAMReadOnlyAccess
+
+3. Assign the "IAMFullAccess" policy to the Audit-Team group.
+
+root@DESKTOP-DA2RDP0:harsh# aws iam attach-group-policy --group-name Audit-Team --policy-arn arn:aws:iam::aws:policy/IAMFullAccess
+root@DESKTOP-DA2RDP0:harsh#
+
+
+Q.4
+1. Add Alice, Bob, and Charles to the Developers group.
+
+root@DESKTOP-DA2RDP0:harsh# aws iam add-user-to-group --group-name Developers --user-name Alice
+root@DESKTOP-DA2RDP0:harsh# aws iam add-user-to-group --group-name Developers --user-name Bob
+root@DESKTOP-DA2RDP0:harsh# aws iam add-user-to-group --group-name Developers --user-name Charles
+
+2. Add David and Edward to the Operations group.
+
+root@DESKTOP-DA2RDP0:harsh# aws iam add-user-to-group --group-name Operations --user-name David
+root@DESKTOP-DA2RDP0:harsh# aws iam add-user-to-group --group-name Operations --user-name Edward
+
+3. Add Charles and David to the Audit-Team group.
+
+root@DESKTOP-DA2RDP0:harsh# aws iam add-user-to-group --group-name Audit-Team --user-name Charles
+root@DESKTOP-DA2RDP0:harsh# aws iam add-user-to-group --group-name Audit-Team --user-name David
+
+Ctrl + Alt + select particular 
+Ctrl + k = forward delete 
+
+4.
+Assign an inline policy to Fred
+
+Create one file and add chrome one policy code and paste in new file  --policy name (give new name)
+
+root@DESKTOP-DA2RDP0:Desktop# vim policy.json
+root@DESKTOP-DA2RDP0:Desktop# aws iam create-policy --policy-name harsh_policy --policy-document file://policy_json
+{
+    "Policy": {
+        "PolicyName": "harsh_policy",
+        "PolicyId": "ANPARUKMIQZYV3WYQD5D6",
+        "Arn": "arn:aws:iam::112365962865:policy/harsh_policy",
+        "Path": "/",
+        "DefaultVersionId": "v1",
+        "AttachmentCount": 0,
+        "PermissionsBoundaryUsageCount": 0,
+        "IsAttachable": true,
+        "CreateDate": "2024-01-12T07:05:33Z",
+        "UpdateDate": "2024-01-12T07:05:33Z"
+    }
+}
+root@DESKTOP-DA2RDP0:Desktop# aws iam help
+root@DESKTOP-DA2RDP0:Desktop# aws iam attach-user-policy help
+root@DESKTOP-DA2RDP0:Desktop# aws iam attach-user-policy --user-name Fred --policy-arn arn:aws:iam::112365962865:policy/harsh_policy
+root@DESKTOP-DA2RDP0:Desktop#
+
+Q.5. Log into the AWS account as an IAM user, and list IAM user actions in terminal
+
+root@DESKTOP-DA2RDP0:Desktop#
+root@DESKTOP-DA2RDP0:Desktop# aws iam list-users
+{
+    "Users": [
+        {
+            "Path": "/",
+            "UserName": "Alice",
+            "UserId": "AIDARUKMIQZYTFT3X7XUF",
+            "Arn": "arn:aws:iam::112365962865:user/Alice",
+            "CreateDate": "2024-01-12T05:30:44Z"
+        },
+        {
+            "Path": "/",
+            "UserName": "Bob",
+            "UserId": "AIDARUKMIQZYSSCGH3Y2F",
+            "Arn": "arn:aws:iam::112365962865:user/Bob",
+            "CreateDate": "2024-01-12T05:31:00Z"
+        },
+        {
+            "Path": "/",
+            "UserName": "Charles",
+            "UserId": "AIDARUKMIQZY2OKWFF27L",
+            "Arn": "arn:aws:iam::112365962865:user/Charles",
+            "CreateDate": "2024-01-12T05:31:14Z"
+        },
+        {
+            "Path": "/",
+            "UserName": "David",
+            "UserId": "AIDARUKMIQZYYT2LMDALS",
+            "Arn": "arn:aws:iam::112365962865:user/David",
+            "CreateDate": "2024-01-12T05:31:25Z"
+        },
+        {
+            "Path": "/",
+            "UserName": "Edward",
+            "UserId": "AIDARUKMIQZY4GU2XU4H3",
+            "Arn": "arn:aws:iam::112365962865:user/Edward",
+            "CreateDate": "2024-01-12T05:31:37Z"
+        },
+        {
+            "Path": "/",
+            "UserName": "Fred",
+            "UserId": "AIDARUKMIQZY5TMTLYTDY",
+            "Arn": "arn:aws:iam::112365962865:user/Fred",
+            "CreateDate": "2024-01-12T05:31:51Z"
+        }
+    ]
+}
+root@DESKTOP-DA2RDP0:Desktop#
